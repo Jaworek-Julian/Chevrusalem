@@ -14,9 +14,4 @@ public class PlayerManager : MonoBehaviour
       playerAtk = GetComponent<PlayerAtk>();
    }
 
-   private void Update()
-   {
-      
-   }
-
 }
