@@ -6,18 +6,18 @@ using UnityEngine.PlayerLoop;
 
 public class PlayerAnimator : PlayerManager
 {
-   // private PlayerAtk playerAtk;
     private PlayerLocomotion playerLocomotion;
     private PlayerStats playerStats;
-    private PlayerAtk playerAtk;
 
+    // Animator anim;
+    // PlayerAtk playerAtk;
 
     private void Awake()
     {
         //playerAtk = GetComponent<PlayerAtk>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
         playerStats = GetComponent<PlayerStats>();
-        playerAtk = GetComponent<PlayerAtk>();
+        // playerAtk = GetComponent<PlayerAtk>();
     }
 
     public void OnRun()
@@ -28,12 +28,13 @@ public class PlayerAnimator : PlayerManager
     public void Hit()
     {
         //Play animation
-        
+        anim.SetTrigger("AttackNormal");
+
         //penser à voir pour le combo
-        
+
         //sert pour le proto
-        
-        playerAtk.pointDroit.SetActive(true);
+
+        // playerAtk.pointDroit.SetActive(true);
         StartCoroutine(DontMoveDuringAPunch(0.5f));
     }
 
@@ -43,7 +44,7 @@ public class PlayerAnimator : PlayerManager
         
         yield return new WaitForSeconds(WaitingTime);
         
-        playerAtk.pointDroit.SetActive(false);
+        // playerAtk.pointDroit.SetActive(false);
         playerAtk.isInteracting = false;
     }
 

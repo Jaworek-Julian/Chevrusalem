@@ -37,7 +37,7 @@ public class PlayerLocomotion : PlayerManager
         }
         else if(playerAtk.isInteracting)
         {
-            Debug.Log("je marche pas");
+            // Debug.Log("je marche pas");
         }
         
         cam.transform.position = cameraOffset + transform.position;

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-   private Animator anim;
-   private PlayerAtk playerAtk;
+   protected Animator anim;
+   protected PlayerAtk playerAtk;
 
-   private void Start()
+   protected void Start()
    {
       anim = GetComponent<Animator>();
       playerAtk = GetComponent<PlayerAtk>();

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5621041219301781664}
   - component: {fileID: 5621041219301781695}
   - component: {fileID: 4934418413005370443}
-  - component: {fileID: 5144913511931149958}
+  - component: {fileID: 7951426203721995977}
   m_Layer: 8
   m_Name: PlayerF2
   m_TagString: Untagged
@@ -81,8 +81,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  mpMax: 0
   speed: 5
   speedRotation: 25
+  attack: 0
 --- !u!114 &5621041219301781695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!95 &5144913511931149958
+--- !u!95 &7951426203721995977
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

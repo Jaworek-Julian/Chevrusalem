@@ -24,7 +24,7 @@ public class PlayerAtk : PlayerManager
     {
         if (baseAtk.isHitting && isInteracting == false)
         {
-            pointDroit.SetActive(true);
+            // pointDroit.SetActive(true);
             isInteracting = true;
             playerAnimator.Hit();
         }
