@@ -23,6 +23,7 @@ public class PlayerAnimator : PlayerManager
     public void OnRun()
     {
         //Play animation
+        anim.SetFloat("MoveSpeed", playerStats.speed);
     }
 
     public void Hit()
@@ -35,17 +36,6 @@ public class PlayerAnimator : PlayerManager
         //sert pour le proto
 
         // playerAtk.pointDroit.SetActive(true);
-        StartCoroutine(DontMoveDuringAPunch(0.5f));
-    }
-
-    private IEnumerator DontMoveDuringAPunch(float WaitingTime)
-    {
-        
-        
-        yield return new WaitForSeconds(WaitingTime);
-        
-        // playerAtk.pointDroit.SetActive(false);
-        playerAtk.isInteracting = false;
     }
 
     public void TakingDamage()

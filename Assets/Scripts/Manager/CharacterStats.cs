@@ -5,7 +5,7 @@ using UnityEngine;
 abstract public class CharacterStats : MonoBehaviour
 {
     public float hp;
-    public float mpMax;
+    public float hpMax;
     public float speed;
     public float speedRotation;
 
