@@ -17,7 +17,7 @@ public class PlayerAtk : PlayerManager
     private void Awake()
     {
         //point = GameObject.Find("Cube""); 
-        playerAnimator = GetComponent<PlayerAnimator>();
+        playerAnimator = GetComponentInChildren<PlayerAnimator>();
     }
 
     private void FixedUpdate()

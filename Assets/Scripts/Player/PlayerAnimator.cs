@@ -8,6 +8,7 @@ public class PlayerAnimator : PlayerManager
 {
     private PlayerLocomotion playerLocomotion;
     private PlayerStats playerStats;
+    private Rigidbody rb;
 
     // Animator anim;
     // PlayerAtk playerAtk;
@@ -18,12 +19,13 @@ public class PlayerAnimator : PlayerManager
         playerLocomotion = GetComponent<PlayerLocomotion>();
         playerStats = GetComponent<PlayerStats>();
         // playerAtk = GetComponent<PlayerAtk>();
+        rb = GetComponentInParent<Rigidbody>();
     }
 
-    public void OnRun()
+    public void OnRun(float magnitude)
     {
         //Play animation
-        anim.SetFloat("MoveSpeed", playerStats.speed);
+        anim.SetFloat("MoveSpeed", magnitude);
     }
 
     public void Hit()

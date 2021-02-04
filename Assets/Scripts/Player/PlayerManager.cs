@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
 
    protected void Start()
    {
-      anim = GetComponent<Animator>();
+      anim = GetComponentInChildren<Animator>();
       playerAtk = GetComponent<PlayerAtk>();
    }
 

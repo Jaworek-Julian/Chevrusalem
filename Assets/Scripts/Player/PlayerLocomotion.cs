@@ -37,7 +37,7 @@ public class PlayerLocomotion : PlayerManager
             //change la rotation du personnage (exemple je tourne à droite, donc je regarde vers la droite)
             transform.rotation = Quaternion.Slerp(transform.rotation, targetAngle, Time.deltaTime * playerStats.speedRotation);
 
-            playerAnim.OnRun();
+            playerAnim.OnRun(direction.magnitude);
         }
         else if(playerAtk.isInteracting)
         {
