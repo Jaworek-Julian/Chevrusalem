@@ -10,6 +10,9 @@ public class PlayerAnimator : PlayerManager
     private PlayerStats playerStats;
     private Rigidbody rb;
 
+    private float m_counter = 0;
+    private bool m_combo = false;
+
     // Animator anim;
     // PlayerAtk playerAtk;
 
@@ -26,18 +29,39 @@ public class PlayerAnimator : PlayerManager
     {
         //Play animation
         anim.SetFloat("MoveSpeed", magnitude);
+        m_combo = true;
     }
 
     public void Hit()
     {
+        SetActiveHands();
+
+        if (m_combo == true)
+        {
+            anim.SetTrigger("AttackNormal2");
+            Debug.Log("ça combote");
+        }
+
         //Play animation
         anim.SetTrigger("AttackNormal");
+        m_combo = true;
 
         //penser à voir pour le combo
 
         //sert pour le proto
 
         // playerAtk.pointDroit.SetActive(true);
+    }
+
+    private void SetActiveHands()
+    {
+        handScript[] hands = GetComponentsInChildren<handScript>();
+
+        foreatch(handScript hand in handScripts)
+            {
+
+        }
+
     }
 
     public void TakingDamage()
@@ -49,5 +73,20 @@ public class PlayerAnimator : PlayerManager
     {
         //Play animation
     }
-    
+
+    private void Update()
+    {
+        
+        if (m_combo  == true)
+        {
+            m_counter += Time.deltaTime;
+
+            if (m_counter >= 20)
+            {
+                m_combo = false;
+                m_counter = 0;
+            }
+        }
+    }
+
 }

@@ -17,6 +17,8 @@ public class EnemieStats : CharacterStats
         {
             Destroy(this.gameObject);
         }
+
+        transform.position += Vector3.down * 2 * Time.deltaTime;
     }
     
 }

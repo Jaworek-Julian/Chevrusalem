@@ -1275,6 +1275,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1944906642613823532, guid: 4dacbea66ba52b8498f9d907832331de,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2981150729343356768, guid: 4dacbea66ba52b8498f9d907832331de,
         type: 3}
       propertyPath: baseAtk
@@ -1290,6 +1295,16 @@ PrefabInstance:
       propertyPath: variableJoystick
       value: 
       objectReference: {fileID: 1460300821}
+    - target: {fileID: 2981150729343356771, guid: 4dacbea66ba52b8498f9d907832331de,
+        type: 3}
+      propertyPath: hpMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981150729343356771, guid: 4dacbea66ba52b8498f9d907832331de,
+        type: 3}
+      propertyPath: attack
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2981150729343356773, guid: 4dacbea66ba52b8498f9d907832331de,
         type: 3}
       propertyPath: m_RootOrder
@@ -1345,10 +1360,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2981150729343356774, guid: 4dacbea66ba52b8498f9d907832331de,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2981150729343356797, guid: 4dacbea66ba52b8498f9d907832331de,
         type: 3}
       propertyPath: m_Name
       value: PlayerF1 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981150729343356797, guid: 4dacbea66ba52b8498f9d907832331de,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4506961738586211226, guid: 4dacbea66ba52b8498f9d907832331de,
         type: 3}
@@ -1359,6 +1384,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UpdateMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981392395095615591, guid: 4dacbea66ba52b8498f9d907832331de,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143729844944994885, guid: 4dacbea66ba52b8498f9d907832331de,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7614984659407956031, guid: 4dacbea66ba52b8498f9d907832331de,
         type: 3}

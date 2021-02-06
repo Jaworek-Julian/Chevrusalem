@@ -13,7 +13,7 @@ public class PlayerAtk : PlayerManager
     private PlayerAnimator playerAnimator;
     
     public bool isInteracting = false;
-    
+
     private void Awake()
     {
         //point = GameObject.Find("Cube""); 
@@ -27,6 +27,10 @@ public class PlayerAtk : PlayerManager
             // pointDroit.SetActive(true);
             isInteracting = true;
             playerAnimator.Hit();
+        }
+        else if (!baseAtk.isHitting)
+        {
+            isInteracting = false;
         }
     }
 }
