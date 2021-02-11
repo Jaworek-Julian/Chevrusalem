@@ -11,6 +11,12 @@ public class EnemieStats : CharacterStats
     
     //Fonctino de prise de dommage
     
-    //Fonction de mort
+    void Update()
+    {
+        if (this.hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     
 }

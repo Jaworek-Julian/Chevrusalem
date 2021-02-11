@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour
+abstract public class CharacterStats : MonoBehaviour
 {
-    public int hp;
-    public int maxHp;
-    public int speed;
-    
+    public float hp;
+    public float hpMax;
+    public float speed;
     public float speedRotation;
+
+    [SerializeField] protected float attack;
+    public void Attack(CharacterStats p_target)
+    {
+        p_target.hp -= this.attack;
+        Debug.Log(p_target.hp);
+    }
 }

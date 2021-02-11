@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 3464358046420088729}
   m_Layer: 0
   m_Name: MobF1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,6 +171,7 @@ MonoBehaviour:
     m_Bits: 256
   distanceFromTarget: 1.15
   stoppingDistance: 2
+  m_canMove: 1
 --- !u!114 &3464358046420088730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  hpMax: 0
   speed: 3
   speedRotation: 200
+  attack: 0
 --- !u!114 &3464358046420088729
 MonoBehaviour:
   m_ObjectHideFlags: 0
