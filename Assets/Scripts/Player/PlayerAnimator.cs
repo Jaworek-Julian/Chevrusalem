@@ -34,7 +34,7 @@ public class PlayerAnimator : PlayerManager
 
     public void Hit()
     {
-        SetActiveHands();
+        StartCoroutine(SetActiveHands());
 
         if (m_combo == true)
         {
@@ -53,16 +53,37 @@ public class PlayerAnimator : PlayerManager
         // playerAtk.pointDroit.SetActive(true);
     }
 
-    private void SetActiveHands()
+    IEnumerator SetActiveHands()
+    {
+        activeHands(true);
+        
+        yield return new WaitForSeconds(3);
+        activeHands(false);
+    }
+
+    
+    void activeHands(bool p_action)
     {
         handScript[] hands = GetComponentsInChildren<handScript>();
 
-        foreatch(handScript hand in handScripts)
+        foreach (handScript hand in hands)
+        {
+            switch(p_action)
             {
+                case true:
+                    hand.enabled = true;
+                    break;
 
+                case false:
+                    hand.enabled = false;
+                    break;
+            }
         }
-
     }
+
+
+
+
 
     public void TakingDamage()
     {

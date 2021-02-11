@@ -18,12 +18,13 @@ public class handScript : MonoBehaviour
         {
             GameObject target = collision.gameObject;
             target.GetComponent<EnemiLocomotion>().m_canMove = false;
-            // collision.gameObject;
 
-            m_thisStat.Attack(target.GetComponent<CharacterStats>());
+           if (target.GetComponent<CharacterStats>() != null)
+           {
+                m_thisStat.Attack(target.GetComponent<CharacterStats>());
+           }
 
             StartCoroutine(TargetProjection(target));
-            
         };
         
     }
