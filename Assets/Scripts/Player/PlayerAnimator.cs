@@ -64,5 +64,20 @@ public class PlayerAnimator : PlayerManager
     {
         //Play animation
     }
+
+    public void SuperAtk1()
+    {
+        Debug.Log("Charge");
+    }
+
+    public void SuperAtk2()
+    {
+        Debug.Log("Cheeeeeeeeeh !!!!!!");
+    }
+
+    public void SuperAtk3()
+    {
+        Debug.Log("Zone");
+    }
     
 }
