@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
+    
+  
     //récupération de l'animator
     
     //définition de la vie max au start

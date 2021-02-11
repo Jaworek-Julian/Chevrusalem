@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Chevrusalem.unity
+    guid: c8987c91fff7a65459c31f2f01215ee0
   m_configObjects: {}

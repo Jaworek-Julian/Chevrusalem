@@ -13,24 +13,20 @@ public class PlayerAtk : PlayerManager
     private PlayerAnimator playerAnimator;
     
     public bool isInteracting = false;
-
+    
     private void Awake()
     {
         //point = GameObject.Find("Cube""); 
-        playerAnimator = GetComponentInChildren<PlayerAnimator>();
+        playerAnimator = GetComponent<PlayerAnimator>();
     }
 
     private void FixedUpdate()
     {
         if (baseAtk.isHitting && isInteracting == false)
         {
-            // pointDroit.SetActive(true);
+            pointDroit.SetActive(true);
             isInteracting = true;
             playerAnimator.Hit();
-        }
-        else if (!baseAtk.isHitting)
-        {
-            isInteracting = false;
         }
     }
 }

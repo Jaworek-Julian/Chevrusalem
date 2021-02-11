@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-   protected Animator anim;
-   // protected PlayerAtk playerAtk;
+   private Animator anim;
+   private PlayerAtk playerAtk;
 
-   protected void Start()
+   private void Start()
    {
-      anim = GetComponentInChildren<Animator>();
-      //playerAtk = GetComponent<PlayerAtk>();
+      anim = GetComponent<Animator>();
+      playerAtk = GetComponent<PlayerAtk>();
+   }
+
+   private void Update()
+   {
+      
    }
 
 }

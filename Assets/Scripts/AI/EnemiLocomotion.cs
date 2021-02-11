@@ -17,7 +17,6 @@ public class EnemiLocomotion : MonoBehaviour
 
     public float distanceFromTarget;
     public float stoppingDistance = 1f;
-    public bool m_canMove = true;
     
     private void Awake()
     {
@@ -41,7 +40,7 @@ public class EnemiLocomotion : MonoBehaviour
         {
             CharacterStats characterStats = colliders[i].transform.GetComponent<CharacterStats>();
 
-            if (characterStats != null && m_canMove == true)
+            if (characterStats != null)
             {
                 //Check for team ID
                 Vector3 targetDirection = characterStats.transform.position - transform.position;
@@ -92,7 +91,7 @@ public class EnemiLocomotion : MonoBehaviour
     private void HandleRotateTowardTarget()
     {
         //rotation manuelle
-        if (enemyManager.isPerformingAction && m_canMove == true)
+        if (enemyManager.isPerformingAction)
         {
             Vector3 direction = currentTarget.transform.position - transform.position;
             direction.y = 0;
@@ -117,7 +116,7 @@ public class EnemiLocomotion : MonoBehaviour
             
             relativeDirection.Normalize();
 
-            if (distanceFromTarget > stoppingDistance && m_canMove == true)
+            if (distanceFromTarget > stoppingDistance)
                 controller.Move(relativeDirection * Time.deltaTime * enemyStats.speed);
             else
                 controller.Move(relativeDirection * 0);
