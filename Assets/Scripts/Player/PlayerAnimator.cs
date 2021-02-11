@@ -10,7 +10,6 @@ public class PlayerAnimator : PlayerManager
     private PlayerStats playerStats;
     private Rigidbody rb;
 
-    private float m_counter = 0;
     private bool m_combo = false;
 
     // Animator anim;
@@ -29,22 +28,30 @@ public class PlayerAnimator : PlayerManager
     {
         //Play animation
         anim.SetFloat("MoveSpeed", magnitude);
-        m_combo = true;
     }
 
     public void Hit()
-    {
-        StartCoroutine(SetActiveHands());
+    {       
 
+        // attaque combo 2
         if (m_combo == true)
         {
+            StartCoroutine(SetActiveHands());
+
             anim.SetTrigger("AttackNormal2");
-            Debug.Log("ça combote");
+            m_combo = false;
+        }
+        // attaque combo 1
+        else
+        {
+            StartCoroutine(SetActiveHands());
+            anim.SetTrigger("AttackNormal");
+            m_combo = true;
+            StartCoroutine(ResetCombo());
         }
 
         //Play animation
-        anim.SetTrigger("AttackNormal");
-        m_combo = true;
+        
 
         //penser à voir pour le combo
 
@@ -53,12 +60,21 @@ public class PlayerAnimator : PlayerManager
         // playerAtk.pointDroit.SetActive(true);
     }
 
+    // active les collider des mains lors de l'attaque
     IEnumerator SetActiveHands()
     {
         activeHands(true);
         
         yield return new WaitForSeconds(3);
         activeHands(false);
+    }
+
+    // empeche de combo après 2 sec d'attente
+    IEnumerator ResetCombo()
+    { 
+        yield return new WaitForSeconds(1f);
+        m_combo = false;
+        Debug.Log(m_combo);
     }
 
     
@@ -81,10 +97,6 @@ public class PlayerAnimator : PlayerManager
         }
     }
 
-
-
-
-
     public void TakingDamage()
     {
         //Animation de prise de coup ou apparition d'une connerie pour le faire comprendre
@@ -94,20 +106,4 @@ public class PlayerAnimator : PlayerManager
     {
         //Play animation
     }
-
-    private void Update()
-    {
-        
-        if (m_combo  == true)
-        {
-            m_counter += Time.deltaTime;
-
-            if (m_counter >= 20)
-            {
-                m_combo = false;
-                m_counter = 0;
-            }
-        }
-    }
-
 }
