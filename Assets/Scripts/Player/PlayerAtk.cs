@@ -20,7 +20,6 @@ public class PlayerAtk : PlayerManager
         playerAnimator = GetComponentInChildren<PlayerAnimator>();
     }
 
-/*
     private void FixedUpdate()
     {
         if (baseAtk.isHitting && isInteracting == false)
@@ -32,16 +31,6 @@ public class PlayerAtk : PlayerManager
         else if (!baseAtk.isHitting)
         {
             isInteracting = false;
-        }
-    }
-*/
-    public void Hit()
-    {
-        if (!isInteracting)
-        {
-            // pointDroit.SetActive(true);
-            isInteracting = true;
-            playerAnimator.Hit();
         }
     }
 }

@@ -12,10 +12,8 @@ public class handScript : MonoBehaviour
         m_thisStat = GetComponentInParent<CharacterStats>();
     }
 
-    // attack if the hand collide
     private void OnTriggerEnter(Collider collision)
     {
-        // get enemy tag
         if (collision.gameObject.CompareTag("Enemy"))
         {
             GameObject target = collision.gameObject;

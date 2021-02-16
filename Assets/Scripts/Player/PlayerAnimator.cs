@@ -6,24 +6,21 @@ using UnityEngine.PlayerLoop;
 
 public class PlayerAnimator : PlayerManager
 {
-    private PlayerLocomotion m_playerLocomotion;
-    private PlayerStats m_playerStats;
-    private PlayerAtk m_playerAtk;
+    private PlayerLocomotion playerLocomotion;
+    private PlayerStats playerStats;
     private Rigidbody rb;
 
-    int m_atkCombo = 0;
+    private bool m_combo = false;
 
-    Animator m_anim;
-    AnimatorClipInfo[] m_CurrentClipInfo;
-    // m_PlayerAtk m_playerAtk;
+    // Animator anim;
+    // PlayerAtk playerAtk;
 
     private void Awake()
     {
-        m_playerLocomotion = GetComponent<PlayerLocomotion>();
-        m_playerStats = GetComponent<PlayerStats>();
-        m_playerAtk = GetComponent<PlayerAtk>();
-        m_anim = GetComponentInChildren<Animator>();
-
+        //playerAtk = GetComponent<PlayerAtk>();
+        playerLocomotion = GetComponent<PlayerLocomotion>();
+        playerStats = GetComponent<PlayerStats>();
+        // playerAtk = GetComponent<PlayerAtk>();
         rb = GetComponentInParent<Rigidbody>();
     }
 
@@ -35,58 +32,40 @@ public class PlayerAnimator : PlayerManager
 
     public void Hit()
     {       
-        switch(m_atkCombo)
+
+        // attaque combo 2
+        if (m_combo == true)
         {
-            case 0:
-                anim.SetTrigger("AttackNormal");
-                StartCoroutine(SetActiveHands());
-                m_atkCombo = 1;
-                break;
+            StartCoroutine(SetActiveHands());
 
-            case 1:
-                // Call animation
-                m_anim.SetTrigger("AttackNormal2");
-                StartCoroutine(SetActiveHands());
-                m_atkCombo = 2;
-                break;
-
-            case 2:
-                m_anim.SetTrigger("AttackNormal3");
-                StartCoroutine(SetActiveHands());
-                m_atkCombo = 0;
-                break;
+            anim.SetTrigger("AttackNormal2");
+            m_combo = false;
         }
-
-        StartCoroutine(ResetCombo(m_atkCombo));
+        // attaque combo 1
+        else
+        {
+            StartCoroutine(SetActiveHands());
+            anim.SetTrigger("AttackNormal");
+            m_combo = true;
+            StartCoroutine(ResetCombo());
+        }
     }
 
-    void GetCurrentAnimationTime()
-    {
-        m_CurrentClipInfo = m_anim.GetCurrentAnimatorClipInfo(0);
-    }
-
-    // During the animation, the character can't move and the hands are active
+    // active les collider des mains lors de l'attaque
     IEnumerator SetActiveHands()
     {
-        GetCurrentAnimationTime();
-
         activeHands(true);
         
-        yield return new WaitForSeconds(m_CurrentClipInfo[0].clip.length);
-        
+        yield return new WaitForSeconds(1.5f);
         activeHands(false);
-        m_playerAtk.isInteracting = false;
     }
 
-    // empeche de combo après 3 sec d'attente
-    IEnumerator ResetCombo(int p_comboNumber)
+    // empeche de combo après 2 sec d'attente
+    IEnumerator ResetCombo()
     { 
-        yield return new WaitForSeconds(3f);
-        // si le numéro du combo n'a pas changer, on reset le combo
-        if (p_comboNumber == m_atkCombo)
-        {
-            m_atkCombo = 0;
-        }
+        yield return new WaitForSeconds(1f);
+        m_combo = false;
+        Debug.Log(m_combo);
     }
 
     
