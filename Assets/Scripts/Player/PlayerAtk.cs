@@ -20,28 +20,14 @@ public class PlayerAtk : PlayerManager
         playerAnimator = GetComponentInChildren<PlayerAnimator>();
     }
 
-/*
-    private void FixedUpdate()
-    {
-        if (baseAtk.isHitting && isInteracting == false)
-        {
-            // pointDroit.SetActive(true);
-            isInteracting = true;
-            playerAnimator.Hit();
-        }
-        else if (!baseAtk.isHitting)
-        {
-            isInteracting = false;
-        }
-    }
-*/
     public void Hit()
     {
         if (!isInteracting)
         {
             // pointDroit.SetActive(true);
             isInteracting = true;
-            playerAnimator.Hit();
+            playerAnimator.AnimCharge();
+            // playerAnimator.AnimCharge();
         }
     }
 }

@@ -7,7 +7,7 @@ public class PlayerLocomotion : PlayerManager
 {
     private PlayerStats playerStats; 
     public VariableJoystick variableJoystick;
-    private CharacterController controller;
+    public CharacterController controller;
     private PlayerAtk playerAtk;
     private PlayerAnimator playerAnim;
 
@@ -36,6 +36,8 @@ public class PlayerLocomotion : PlayerManager
             Quaternion targetAngle = Quaternion.LookRotation(direction);
             //change la rotation du personnage (exemple je tourne à droite, donc je regarde vers la droite)
             transform.rotation = Quaternion.Slerp(transform.rotation, targetAngle, Time.deltaTime * playerStats.speedRotation);
+
+            playerAnim.m_tamponDir = direction;
         }
         else if(playerAtk.isInteracting)
         {
@@ -45,5 +47,7 @@ public class PlayerLocomotion : PlayerManager
         playerAnim.OnRun(direction.magnitude);
 
         cam.transform.position = cameraOffset + transform.position;
+
+        Debug.Log(cam.transform.position);
     }
 }

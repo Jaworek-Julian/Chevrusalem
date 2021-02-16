@@ -18,6 +18,8 @@ public class EnemiLocomotion : MonoBehaviour
     public float distanceFromTarget;
     public float stoppingDistance = 1f;
     public bool m_canMove = true;
+
+    public bool m_isEjected = false;         // HandScript
     
     private void Awake()
     {
@@ -128,6 +130,17 @@ public class EnemiLocomotion : MonoBehaviour
         
     }
     
+    void FixedUpdate()
+    {
+        if (m_isEjected == true)
+        {
+            Debug.Log("OhLALA JE SUIS EJECTE");
+            Vector3 direction = (transform.position - currentTarget.transform.position).normalized;
+            direction.y += 10f;
+            //direction.normalized;
+            controller.Move(direction * Time.deltaTime * enemyStats.speed * 5f);
+        }
+    }
     
     
 }

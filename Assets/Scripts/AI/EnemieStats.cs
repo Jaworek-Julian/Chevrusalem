@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemieStats : CharacterStats
 {
-    
+
     //récupération de l'animator
     
     //définition de la vie max au start

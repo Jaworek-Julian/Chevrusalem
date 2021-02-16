@@ -33,11 +33,15 @@ public class handScript : MonoBehaviour
 
     IEnumerator TargetProjection(GameObject p_target)
     {
-        
+        bool canMove = p_target.gameObject.GetComponent<EnemiLocomotion>().m_canMove;
+        bool isEjected = p_target.GetComponent<EnemiLocomotion>().m_isEjected;
+
+        isEjected = true;
+        canMove = false;
+
         yield return new WaitForSeconds(3);
-        p_target.gameObject.GetComponent<EnemiLocomotion>().m_canMove = true;
+        canMove = true;
+        isEjected = false;
 
     }
-
-
 }

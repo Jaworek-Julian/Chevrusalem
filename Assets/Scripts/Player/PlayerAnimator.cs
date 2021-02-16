@@ -11,10 +11,13 @@ public class PlayerAnimator : PlayerManager
     private PlayerAtk m_playerAtk;
     private Rigidbody rb;
 
+    public Vector3 m_tamponDir;
+
     int m_atkCombo = 0;
 
     Animator m_anim;
     AnimatorClipInfo[] m_CurrentClipInfo;
+    bool isRunning = false;
     // m_PlayerAtk m_playerAtk;
 
     private void Awake()
@@ -33,7 +36,11 @@ public class PlayerAnimator : PlayerManager
         anim.SetFloat("MoveSpeed", magnitude);
     }
 
-    public void Hit()
+    //---------------------------------------------------------------------------------
+    // ANIMATION
+    //---------------------------------------------------------------------------------
+
+    public void AnimHit()
     {       
         switch(m_atkCombo)
         {
@@ -60,6 +67,36 @@ public class PlayerAnimator : PlayerManager
         StartCoroutine(ResetCombo(m_atkCombo));
     }
 
+    public void AnimCharge()
+    {
+        anim.SetTrigger("Charge");
+        StartCoroutine(ChargeMovement());
+    }
+
+    public void TakingDamage()
+    {
+        //Animation de prise de coup ou apparition d'une connerie pour le faire comprendre
+    }
+
+    public void DeadAnim()
+    {
+        //Play animation
+    }
+
+    //---------------------------------------------------------------------------------
+    // FUNCTIONS
+    //---------------------------------------------------------------------------------
+
+    public IEnumerator ChargeMovement()
+    {
+        GetCurrentAnimationTime();
+        isRunning = true;
+
+        yield return new WaitForSeconds(m_CurrentClipInfo[0].clip.length);
+        isRunning = false;
+        m_playerAtk.isInteracting = false;
+    }
+
     void GetCurrentAnimationTime()
     {
         m_CurrentClipInfo = m_anim.GetCurrentAnimatorClipInfo(0);
@@ -70,11 +107,11 @@ public class PlayerAnimator : PlayerManager
     {
         GetCurrentAnimationTime();
 
-        activeHands(true);
+        ActiveHands(true);
         
         yield return new WaitForSeconds(m_CurrentClipInfo[0].clip.length);
         
-        activeHands(false);
+        ActiveHands(false);
         m_playerAtk.isInteracting = false;
     }
 
@@ -88,9 +125,8 @@ public class PlayerAnimator : PlayerManager
             m_atkCombo = 0;
         }
     }
-
     
-    void activeHands(bool p_action)
+    void ActiveHands(bool p_action)
     {
         handScript[] hands = GetComponentsInChildren<handScript>();
 
@@ -109,13 +145,11 @@ public class PlayerAnimator : PlayerManager
         }
     }
 
-    public void TakingDamage()
+    void FixedUpdate()
     {
-        //Animation de prise de coup ou apparition d'une connerie pour le faire comprendre
-    }
-
-    public void DeadAnim()
-    {
-        //Play animation
+        if (isRunning)
+        {
+            m_playerLocomotion.controller.Move(m_tamponDir * Time.deltaTime * 10f);
+        }
     }
 }
