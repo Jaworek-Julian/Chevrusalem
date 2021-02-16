@@ -15,7 +15,7 @@ public class EnemieStats : CharacterStats
     {
         if (this.hp <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
     
